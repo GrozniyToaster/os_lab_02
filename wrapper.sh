@@ -26,11 +26,12 @@ function main()
 {
   log_info "Stage #1 Compiling..."
   local build_dir=build
+  local src=src
 
   rm -rf ${build_dir}
   mkdir ${build_dir}
-  cp Makefile ./${build_dir}
-  cp *.c ./${build_dir}
+  cp ${src}/Makefile ./${build_dir}
+  cp ${src}/{*.c} ./${build_dir}
   if ! make --directory=${build_dir} debug  ; then
     log_error "Failed to compile."
     return 1
